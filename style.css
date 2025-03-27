@@ -108,3 +108,40 @@ label {
     font-size: 0.9em;
     color: #6c757d; /* Gris */
 }
+
+.anteriorguesses {
+    display: flex;
+    justify-content: ;
+    align-items: center;
+    margin-top: 20px;
+    text-align: left;
+    max-height: 100px;
+    border: 2px solid #df6d6d;
+    padding: 5px 15px;
+    border-radius: 4px;
+    background-color: #cfabab;
+    width: 350px;
+}
+
+.anterior-guesses h4 {
+    margin-bottom: 5px;
+    color: #1c6eda;
+    text-align: center;
+}
+
+#guessesList {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+#guessesList ol {
+    background-color: #e0e0e0;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: large;
+    color: black;
+}
