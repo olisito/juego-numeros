@@ -38,6 +38,16 @@
             >
                 Jugar de Nuevo
             </button>
+            <div class="seleccion-dificultad">
+                <label for="dificultad"
+                    >Selecciona un nivel de dificultad:</label
+                >
+                <select id="dificultad" onchange="cambiardificultad()">
+                    <option value="50">Fácil (1-50)</option>
+                    <option value="100">Medio (1-100)</option>
+                    <option value="200">Difícil (1-200)</option>
+                </select>
+            </div>
         </div>
 
         <script src="script.js"></script>

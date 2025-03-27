@@ -8,13 +8,17 @@ const guessesList = document.getElementById("guessesList");
 // --- Variables del Juego ---
 let secretNumber;
 let attempts;
-const MAX_NUMBER = 100;
+let MAX_NUMBER = 100;
 const MIN_NUMBER = 1;
+const MAX_ATTEMPTS = 10;
 
 // --- Funciones ---
 
 // Función para iniciar o reiniciar el juego
-
+function cambiardificultad() {
+    MAX_NUMBER = document.getElementById("dificultad").value;
+    startGame();
+}
 function startGame() {
     // Genera un número secreto entre MIN_NUMBER y MAX_NUMBER
     secretNumber = Math.floor(Math.random() * MAX_NUMBER) + MIN_NUMBER;
@@ -29,8 +33,20 @@ function startGame() {
     guessButton.disabled = false; // Habilita el botón de adivinar
     playAgainButton.style.display = "none"; // Oculta el botón de jugar de nuevo
     guessInput.focus(); // Pone el foco en el input
-
+    attempts = 0; // Reinicia los intentos
+    attemptsInfo.textContent = `Intentos: ${attempts} / ${MAX_ATTEMPTS}`;
     console.log(`Pssst... el número secreto es ${secretNumber}`); // Ayuda para depurar
+    const dificultad = document.getElementById("dificultad").value;
+    if (dificultad === "facil") {
+        MIN_NUMBER = 1;
+        MAX_NUMBER = 50;
+    } else if (dificultad === "normal") {
+        MIN_NUMBER = 1;
+        MAX_NUMBER = 100;
+    } else if (dificultad === "Dificl") {
+        MIN_NUMBER = 1;
+        MAX_NUMBER = 200;
+    }
 }
 
 // Función para manejar el intento del usuario
@@ -53,10 +69,16 @@ function handleGuess() {
         guessInput.focus();
         return;
     }
-
+    if (attempts >= 2) {
+        setMessage(
+            `Has perdido!! 😂 JAJAJA 😂 El número secreto era ${secretNumber}.`
+        );
+        endGame();
+        return;
+    }
     // Incrementar el contador de intentos
     attempts++;
-    attemptsInfo.textContent = `Intentos: ${attempts}`;
+    attemptsInfo.textContent = `Intentos: ${attempts} / ${MAX_ATTEMPTS}`;
 
     // aqui hago una lista que muestre los numero que he introducido anteriormente
     const listaItems = document.createElement("ol");
